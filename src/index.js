@@ -1,17 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import GlobalStyle from "./asserts/style/globalStyle";
+import MUIStyles from "./asserts/style/MUIStyles";
+import { StyledEngineProvider } from "@mui/styled-engine";
+import { CssBaseline } from "@mui/material";
+import { ThemeProvider } from "@emotion/react";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={MUIStyles}>
+      <StyledEngineProvider injectFirst>
+        <CssBaseline />
+        <GlobalStyle />
+        <App />
+      </StyledEngineProvider>
+    </ThemeProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root"),
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
