@@ -1,3 +1,4 @@
 import { Header } from "./Header";
+import { Wrapper } from "./Wrapper";
 
-export { Header };
+export { Header, Wrapper };

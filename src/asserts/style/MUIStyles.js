@@ -2,12 +2,16 @@ import { createTheme } from "@mui/material";
 
 const MUIStyles = createTheme({
   palette: {
+    type: "light",
     primary: {
-      main: "#42a5f5",
+      main: "#219ebc",
     },
     secondary: {
       main: "#ffc107",
     },
+  },
+  typography: {
+    fontFamily: "Raleway",
   },
 });
 

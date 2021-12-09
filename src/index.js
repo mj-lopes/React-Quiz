@@ -9,13 +9,13 @@ import { ThemeProvider } from "@emotion/react";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={MUIStyles}>
-      <StyledEngineProvider injectFirst>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={MUIStyles}>
         <CssBaseline />
         <GlobalStyle />
         <App />
-      </StyledEngineProvider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </StyledEngineProvider>
   </React.StrictMode>,
   document.getElementById("root"),
 );
