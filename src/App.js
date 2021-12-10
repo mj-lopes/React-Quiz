@@ -1,17 +1,17 @@
 import { Container } from "@mui/material";
-import { Header, Wrapper, Typography } from "./components";
+import { useContext } from "react";
+import { Header, Wrapper } from "./components";
 import Form from "./InitialForm";
+import StarQuiz from "./starQuiz";
+import { GlobalContext } from "./GlobalContext";
 
 function App() {
+  const { numeroPerguntas } = useContext(GlobalContext);
+
   return (
     <Container maxWidth={"sm"}>
       <Header />
-      <Wrapper>
-        <Typography variant="body1">
-          Quantas perguntas deseja responder?
-        </Typography>
-        <Form />
-      </Wrapper>
+      <Wrapper>{numeroPerguntas ? <StarQuiz /> : <Form />}</Wrapper>
     </Container>
   );
 }

@@ -6,6 +6,7 @@ import MUIStyles from "./asserts/style/MUIStyles";
 import { StyledEngineProvider } from "@mui/styled-engine";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
+import { GlobalStorage } from "./GlobalContext";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,7 +14,9 @@ ReactDOM.render(
       <ThemeProvider theme={MUIStyles}>
         <CssBaseline />
         <GlobalStyle />
-        <App />
+        <GlobalStorage>
+          <App />
+        </GlobalStorage>
       </ThemeProvider>
     </StyledEngineProvider>
   </React.StrictMode>,

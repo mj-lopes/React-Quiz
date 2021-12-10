@@ -1,3 +1,3 @@
 import { Typography } from "@mui/material";
 
-export { Typography };
+export { Typography as String };
