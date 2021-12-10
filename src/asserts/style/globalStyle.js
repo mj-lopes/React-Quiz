@@ -27,6 +27,8 @@ const GlobalStyle = createGlobalStyle`
 
   #root {
     background: url(${background});
+    background-position: center center;
+    background-size: cover;
     height: 100%;
     width: 100%;
     background-size: cover;

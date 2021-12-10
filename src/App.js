@@ -1,15 +1,17 @@
-import { Button, Container } from "@mui/material";
-import { Header, Wrapper } from "./components";
+import { Container } from "@mui/material";
+import { Header, Wrapper, Typography } from "./components";
+import Form from "./InitialForm";
 
 function App() {
   return (
-    <Container maxWidth={"md"}>
+    <Container maxWidth={"sm"}>
       <Header />
-      {/* <Wrapper>
-        <Button variant={"contained"} color={"secondary"}>
-          Test
-        </Button>
-      </Wrapper> */}
+      <Wrapper>
+        <Typography variant="body1">
+          Quantas perguntas deseja responder?
+        </Typography>
+        <Form />
+      </Wrapper>
     </Container>
   );
 }

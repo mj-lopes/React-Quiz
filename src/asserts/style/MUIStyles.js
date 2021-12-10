@@ -11,7 +11,7 @@ const MUIStyles = createTheme({
     },
   },
   typography: {
-    fontFamily: "Raleway",
+    fontFamily: "Helvetica",
   },
 });
 

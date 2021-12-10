@@ -8,6 +8,7 @@ export const Wrapper = ({ children }) => {
         backgroundColor: "#fff",
         borderRadius: "6px",
         overflow: "hidden",
+        padding: "1rem",
       }}
     >
       {children}
