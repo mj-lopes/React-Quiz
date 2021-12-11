@@ -4,9 +4,23 @@ import { Header, Wrapper } from "./components";
 import Form from "./InitialForm";
 import { StartQuiz } from "./startQuiz";
 import { GlobalContext } from "./GlobalContext";
+import { Questao } from "./questao";
 
 function App() {
-  const { numeroPerguntas } = useContext(GlobalContext);
+  const { numeroPerguntas, data } = useContext(GlobalContext);
+
+  if (data) {
+    return (
+      <Container maxWidth={"sm"}>
+        <Header />
+        <Wrapper>
+          {data.map((questao) => (
+            <Questao key={`Questao: ${questao.question}`} dados={questao} />
+          ))}
+        </Wrapper>
+      </Container>
+    );
+  }
 
   return (
     <Container maxWidth={"sm"}>
