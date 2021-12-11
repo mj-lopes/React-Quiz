@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../GlobalContext";
-import { api } from "../api";
+import useFetch from "../useFetchApi";
 import { Btn, Pilha, String } from "../components";
 import { Container } from "./style";
 
 export const StartQuiz = () => {
   const { numeroPerguntas, setNumeroPerguntas } = useContext(GlobalContext);
+  const { request } = useFetch();
 
   return (
     <Container>
@@ -16,7 +17,7 @@ export const StartQuiz = () => {
         <Btn
           estilo={"contained"}
           cor={"secondary"}
-          onClick={() => api(numeroPerguntas)}
+          onClick={() => request(numeroPerguntas)}
         >
           Let's GO!
         </Btn>
