@@ -6,8 +6,9 @@ import {
   FormControlLabel,
   Radio,
 } from "@mui/material";
+import { Btn } from "../components";
 
-export const Questao = ({ dados }) => {
+export const Questao = ({ dados, index, perguntaAtual, setPerguntaAtual }) => {
   const [value, setValue] = useState("");
   const respostas = useRef(
     [...dados.incorrect_answers, dados.correct_answer].sort(
@@ -15,8 +16,10 @@ export const Questao = ({ dados }) => {
     ),
   );
 
+  if (index !== perguntaAtual) return null;
+
   return (
-    <FormControl component="fieldset">
+    <FormControl component="fieldset" sx={{ width: "100%" }}>
       <FormLabel component="legend">{dados.question}</FormLabel>
       <RadioGroup
         aria-label="gender"
@@ -26,13 +29,29 @@ export const Questao = ({ dados }) => {
       >
         {respostas.current.map((resposta) => (
           <FormControlLabel
+            color="primary"
             key={`opcao - ${resposta}`}
             value={resposta}
             control={<Radio />}
             label={resposta}
+            labelPlacement={"start"}
+            sx={{
+              width: "100%",
+              border: "2px solid tomato",
+              background: "theme.primary.main",
+              borderRadius: "8px",
+              margin: "8px 0",
+            }}
           />
         ))}
       </RadioGroup>
+      <Btn
+        estilo={"contained"}
+        cor={"secondary"}
+        onClick={() => setPerguntaAtual(perguntaAtual + 1)}
+      >
+        Próxima pergunta
+      </Btn>
     </FormControl>
   );
 };

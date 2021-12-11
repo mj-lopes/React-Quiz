@@ -1,21 +1,28 @@
 import { Container } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { GlobalContext } from "./GlobalContext";
 import { Header, Wrapper } from "./components";
 import Form from "./InitialForm";
 import { StartQuiz } from "./startQuiz";
-import { GlobalContext } from "./GlobalContext";
 import { Questao } from "./questao";
 
 function App() {
   const { numeroPerguntas, data } = useContext(GlobalContext);
+  const [perguntaAtual, setPerguntaAtual] = useState(0);
 
   if (data) {
     return (
       <Container maxWidth={"sm"}>
         <Header />
         <Wrapper>
-          {data.map((questao) => (
-            <Questao key={`Questao: ${questao.question}`} dados={questao} />
+          {data.map((questao, i) => (
+            <Questao
+              key={`Questao: ${i}`}
+              dados={questao}
+              index={i}
+              setPerguntaAtual={setPerguntaAtual}
+              perguntaAtual={perguntaAtual}
+            />
           ))}
         </Wrapper>
       </Container>
