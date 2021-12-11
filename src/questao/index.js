@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   FormControl,
   FormLabel,
@@ -9,15 +9,11 @@ import {
 
 export const Questao = ({ dados }) => {
   const [value, setValue] = useState("");
-  const [respostas, setRespostas] = useState([]);
-
-  useEffect(() => {
-    setRespostas(
-      [...dados.incorrect_answers, dados.correct_answer].sort(
-        () => Math.random() - 0.5,
-      ),
-    );
-  }, [dados.incorrect_answers, dados.correct_answer]);
+  const respostas = useRef(
+    [...dados.incorrect_answers, dados.correct_answer].sort(
+      () => Math.random() - 0.5,
+    ),
+  );
 
   return (
     <FormControl component="fieldset">
@@ -28,7 +24,7 @@ export const Questao = ({ dados }) => {
         value={value}
         onChange={({ target }) => setValue(target.value)}
       >
-        {respostas.map((resposta) => (
+        {respostas.current.map((resposta) => (
           <FormControlLabel
             key={`opcao - ${resposta}`}
             value={resposta}
