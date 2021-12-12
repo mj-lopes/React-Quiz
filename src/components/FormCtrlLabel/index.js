@@ -1,11 +1,12 @@
 import { FormControlLabel } from "@mui/material";
 
-export const FormCtrlLabel = ({ textoOpcao, elControle }) => (
+export const FormCtrlLabel = ({ value, elControle, ...props }) => (
   <FormControlLabel
-    value={textoOpcao}
-    label={textoOpcao}
+    value={value}
+    label={value}
     control={elControle}
     labelPlacement={"start"}
+    {...props}
     sx={{
       width: "100%",
       border: "2px solid #219ebc",
