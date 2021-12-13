@@ -7,12 +7,12 @@ export const Tittle = ({ children, ...props }) => (
       "::before": {
         content: "''",
         display: "block",
-        width: "100px",
+        width: "150px",
         height: "3px",
         position: "relative",
-        top: "43px",
+        top: "55px",
         borderRadius: "4px",
-        background: "linear-gradient(90deg, #219ebc, #35c480, #ffc107)",
+        background: "#ffc107",
       },
     }}
   >

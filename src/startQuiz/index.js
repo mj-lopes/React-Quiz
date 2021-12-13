@@ -21,7 +21,7 @@ export const StartQuiz = () => {
         >
           Let's GO!
         </Btn>
-        <Btn estilo={"outlined"} onClick={() => setNumeroPerguntas(0)}>
+        <Btn estilo={"outlined"} onClick={() => setNumeroPerguntas(null)}>
           Voltar
         </Btn>
       </BtnsList>

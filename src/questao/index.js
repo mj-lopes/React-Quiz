@@ -14,12 +14,12 @@ export const Questao = ({ dados, index, perguntaAtual, setPerguntaAtual }) => {
     ),
   );
 
-  const global = useContext(GlobalContext);
+  const { setRespostas } = useContext(GlobalContext);
 
   const formik = useFormik({
     initialValues: { resp: "" },
     onSubmit: ({ resp }) => {
-      global.respostas.push(resp);
+      setRespostas((respostas) => [...respostas, resp]);
       setPerguntaAtual(perguntaAtual + 1);
     },
   });

@@ -1,7 +1,8 @@
+import { Divider } from "@mui/material";
 import React from "react";
 import { Btn, String } from "../components";
 
-const ReviewRelatorio = ({ onClick }) => {
+export const ReviewRelatorio = ({ onClick }) => {
   return (
     <div>
       <String variant="h4" component={"h3"}>
@@ -10,8 +11,7 @@ const ReviewRelatorio = ({ onClick }) => {
       <Btn cor={"secondary"} onClick={onClick}>
         Visualizar
       </Btn>
+      <Divider sx={{ margin: "1rem 0" }} />
     </div>
   );
 };
-
-export default ReviewRelatorio;

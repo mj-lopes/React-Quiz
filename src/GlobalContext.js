@@ -8,7 +8,7 @@ export const GlobalStorage = ({ children }) => {
   const [loading, setLoading] = useState(null);
   const [data, setData] = useState(null);
   const [dataLocalStorage, setDataLocalStorage] = useState(null);
-  let respostas = [];
+  const [respostas, setRespostas] = useState([]);
 
   return (
     <GlobalContext.Provider
@@ -22,6 +22,7 @@ export const GlobalStorage = ({ children }) => {
         data,
         setData,
         respostas,
+        setRespostas,
         setDataLocalStorage,
         dataLocalStorage,
       }}

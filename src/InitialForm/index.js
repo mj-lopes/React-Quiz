@@ -31,7 +31,7 @@ const Index = () => {
 
   return (
     <>
-      <Tittle variant="h4" component="h2">
+      <Tittle variant="h3" component="h2">
         Novo Quiz
       </Tittle>
       <form onSubmit={formik.handleSubmit}>
@@ -56,6 +56,7 @@ const Index = () => {
           estilo={"contained"}
           type="submit"
           disabled={formik.isSubmitting}
+          size="large"
         >
           Let's go!
         </Btn>
