@@ -20,52 +20,43 @@ function App() {
     dataLocalStorage,
   } = useContext(GlobalContext);
   const [perguntaAtual, setPerguntaAtual] = useState(0);
+  const [visualizarUltimoQuiz, setVisualizarUltimoQuiz] = useState(false);
 
   useEffect(() => {
     getLocalStorage(setDataLocalStorage);
   }, [setDataLocalStorage]);
 
-  if (numeroPerguntas === perguntaAtual) {
-    setLocalStorage(data, respostas);
-    setLocalScore(
-      respostas.filter((x, i) => x === data[i].correct_answer).length,
-    );
+  const exibirConteudo = () => {
+    if (numeroPerguntas === perguntaAtual) {
+      setLocalStorage(data, respostas);
+      setLocalScore(
+        respostas.filter((x, i) => x === data[i].correct_answer).length,
+      );
 
-    return (
-      <Container maxWidth={"sm"}>
-        <Header />
-        <Wrapper>
-          {data.map((_, i) => (
-            <Resultado key={`Resulta pergunta - ${i + 1}`} index={i} />
-          ))}
-        </Wrapper>
-      </Container>
-    );
-  }
+      return data.map((_, i) => (
+        <Resultado key={`Resulta pergunta - ${i + 1}`} index={i} />
+      ));
+    }
 
-  if (data) {
-    return (
-      <Container maxWidth={"sm"}>
-        <Header />
-        <Wrapper>
-          {data.map((questao, i) => (
-            <Questao
-              key={`Questao: ${i}`}
-              dados={questao}
-              index={i}
-              setPerguntaAtual={setPerguntaAtual}
-              perguntaAtual={perguntaAtual}
-            />
-          ))}
-        </Wrapper>
-      </Container>
-    );
-  }
+    if (data) {
+      return data.map((questao, i) => (
+        <Questao
+          key={`Questao: ${i}`}
+          dados={questao}
+          index={i}
+          setPerguntaAtual={setPerguntaAtual}
+          perguntaAtual={perguntaAtual}
+        />
+      ));
+    }
+
+    return numeroPerguntas ? <StartQuiz /> : <Form />;
+  };
 
   return (
     <Container maxWidth={"sm"}>
       <Header />
-      <Wrapper>{numeroPerguntas ? <StartQuiz /> : <Form />}</Wrapper>
+      <Wrapper>{exibirConteudo()}</Wrapper>
     </Container>
   );
 }
