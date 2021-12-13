@@ -4,6 +4,7 @@ import * as yup from "yup";
 
 import { Btn, Input, String } from "../components";
 import { GlobalContext } from "../GlobalContext";
+import { Tittle } from "./styles";
 
 const Index = () => {
   const { setNumeroPerguntas } = useContext(GlobalContext);
@@ -29,30 +30,37 @@ const Index = () => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <String variant="body1">Quantas perguntas deseja responder?</String>
-      <Input
-        fullWidth
-        id={"num"}
-        nome={"num"}
-        estilo={"outlined"}
-        label={"Número de perguntas"}
-        type={"number"}
-        value={formik.values.num}
-        onChange={formik.handleChange}
-        error={formik.touched.num && Boolean(formik.errors.num)}
-        helperText={formik.touched.num && formik.errors.num}
-      />
+    <>
+      <Tittle variant="h4" component="h2">
+        Novo Quiz
+      </Tittle>
+      <form onSubmit={formik.handleSubmit}>
+        <String variant="body1" sx={{ marginTop: ".5rem" }}>
+          Quantas perguntas deseja responder?
+        </String>
+        <Input
+          fullWidth
+          id={"num"}
+          nome={"num"}
+          estilo={"outlined"}
+          label={"Número de perguntas"}
+          type={"number"}
+          value={formik.values.num}
+          onChange={formik.handleChange}
+          error={formik.touched.num && Boolean(formik.errors.num)}
+          helperText={formik.touched.num && formik.errors.num}
+        />
 
-      <Btn
-        cor={"primary"}
-        estilo={"contained"}
-        type="submit"
-        disabled={formik.isSubmitting}
-      >
-        Let's go!
-      </Btn>
-    </form>
+        <Btn
+          cor={"primary"}
+          estilo={"contained"}
+          type="submit"
+          disabled={formik.isSubmitting}
+        >
+          Let's go!
+        </Btn>
+      </form>
+    </>
   );
 };
 
