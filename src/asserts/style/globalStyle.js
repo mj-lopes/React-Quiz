@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
     outline: none;
     box-sizing: border-box;
     padding: 0;
-    margin: 0;
+    margin: 0;    
   }
 
   body {
@@ -29,12 +29,17 @@ const GlobalStyle = createGlobalStyle`
     background: url(${background});
     background-position: center center;
     background-size: cover;
+    background-attachment: fixed;
+
     height: 100%;
     width: 100%;
     background-size: cover;
     background-position: center center;    
   }
 
+  li, ol {
+    list-style-type: none;
+  }
 `;
 
 export default GlobalStyle;

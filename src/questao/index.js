@@ -1,9 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
 import { FormControl, FormLabel, Radio } from "@mui/material";
 
 import { Btn, FormCtrlLabel, RadioFormGroup } from "../components";
 import parseString from "../helper/parseStringToHTML";
 import { useFormik } from "formik";
+import { GlobalContext } from "../GlobalContext";
 
 export const Questao = ({ dados, index, perguntaAtual, setPerguntaAtual }) => {
   // Randomizar as posições das opções e guardar sua referência.
@@ -13,10 +14,12 @@ export const Questao = ({ dados, index, perguntaAtual, setPerguntaAtual }) => {
     ),
   );
 
+  const global = useContext(GlobalContext);
+
   const formik = useFormik({
     initialValues: { resp: "" },
     onSubmit: ({ resp }) => {
-      alert(resp);
+      global.respostas.push(resp);
       setPerguntaAtual(perguntaAtual + 1);
     },
   });

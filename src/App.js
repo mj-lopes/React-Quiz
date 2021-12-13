@@ -5,10 +5,24 @@ import { Header, Wrapper } from "./components";
 import Form from "./InitialForm";
 import { StartQuiz } from "./startQuiz";
 import { Questao } from "./questao";
+import { Resultado } from "./resultado";
 
 function App() {
   const { numeroPerguntas, data } = useContext(GlobalContext);
   const [perguntaAtual, setPerguntaAtual] = useState(0);
+
+  if (numeroPerguntas === perguntaAtual) {
+    return (
+      <Container maxWidth={"sm"}>
+        <Header />
+        <Wrapper>
+          {data.map((_, i) => (
+            <Resultado key={`Resulta pergunta - ${i + 1}`} index={i} />
+          ))}
+        </Wrapper>
+      </Container>
+    );
+  }
 
   if (data) {
     return (
