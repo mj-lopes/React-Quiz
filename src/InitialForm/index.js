@@ -12,11 +12,11 @@ const Index = () => {
   const validationSchema = yup.object({
     num: yup
       .number("Escolha um número")
-      .required("Escolha um números inteiro")
+      .required("Escolha um número inteiro")
       .min(1, "Escolha um valor entre 1 e 99")
       .max(99, "Escolha um valor entre 1 e 99")
       .positive("Escolha um número positivo")
-      .integer("Escolha um números inteiro"),
+      .integer("Escolha um número inteiro"),
   });
 
   const formik = useFormik({
