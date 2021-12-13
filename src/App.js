@@ -1,5 +1,5 @@
 import { Container } from "@mui/material";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "./GlobalContext";
 import { setLocalStorage } from "./helper/setLocalStorage";
 import { setLocalScore } from "./helper/setLocalScore";
@@ -9,10 +9,21 @@ import Form from "./InitialForm";
 import { StartQuiz } from "./startQuiz";
 import { Questao } from "./questao";
 import { Resultado } from "./resultado";
+import { getLocalStorage } from "./helper/getLocalStorage";
 
 function App() {
-  const { numeroPerguntas, data, respostas } = useContext(GlobalContext);
+  const {
+    numeroPerguntas,
+    data,
+    respostas,
+    setDataLocalStorage,
+    dataLocalStorage,
+  } = useContext(GlobalContext);
   const [perguntaAtual, setPerguntaAtual] = useState(0);
+
+  useEffect(() => {
+    getLocalStorage(setDataLocalStorage);
+  }, [setDataLocalStorage]);
 
   if (numeroPerguntas === perguntaAtual) {
     setLocalStorage(data, respostas);

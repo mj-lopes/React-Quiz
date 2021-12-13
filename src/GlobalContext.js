@@ -7,7 +7,8 @@ export const GlobalStorage = ({ children }) => {
   const [erro, setErro] = useState(null);
   const [loading, setLoading] = useState(null);
   const [data, setData] = useState(null);
-  const respostas = [];
+  const [dataLocalStorage, setDataLocalStorage] = useState(null);
+  let respostas = [];
 
   return (
     <GlobalContext.Provider
@@ -21,6 +22,8 @@ export const GlobalStorage = ({ children }) => {
         data,
         setData,
         respostas,
+        setDataLocalStorage,
+        dataLocalStorage,
       }}
     >
       {children}
