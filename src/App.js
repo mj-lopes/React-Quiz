@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Container, Grid } from "@mui/material";
+import { Backdrop, CircularProgress, Container, Grid } from "@mui/material";
 import { Pontuacao, Wrapper } from "./components";
 import { GlobalContext } from "./GlobalContext";
 
@@ -18,6 +18,7 @@ function App() {
   const {
     numeroPerguntas,
     setNumeroPerguntas,
+    loading,
     data,
     setData,
     respostas,
@@ -95,10 +96,23 @@ function App() {
     return numeroPerguntas ? <StartQuiz /> : <FormNumPerguntas />;
   };
 
+  const exibirCarregamento = () => {
+    return loading ? (
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={true}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+    ) : (
+      ""
+    );
+  };
   return (
     <Container maxWidth={"sm"}>
       <Header onClick={() => handleClickTitulo()} />
       <Wrapper>
+        {exibirCarregamento()}
         {exibirUltimoQuiz()}
         {exibirConteudo()}
       </Wrapper>

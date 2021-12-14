@@ -8,6 +8,8 @@ function useFetch() {
 
   const request = React.useCallback(
     async (quantidade) => {
+      setLoading(true);
+      setErro(false);
       await axios
         .get(`https://opentdb.com/api.php?amount=${quantidade}`)
         .then(({ data }) => {
