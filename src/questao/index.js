@@ -2,19 +2,18 @@ import React, { useRef, useContext } from "react";
 import { FormControl, FormLabel, Radio } from "@mui/material";
 
 import { Btn, FormCtrlLabel, RadioFormGroup } from "../components";
-import parseString from "../helper/parseStringToHTML";
 import { useFormik } from "formik";
 import { GlobalContext } from "../GlobalContext";
 
 export const Questao = ({ dados, index, perguntaAtual, setPerguntaAtual }) => {
+  const { setRespostas } = useContext(GlobalContext);
+
   // Randomizar as posições das opções e guardar sua referência.
   const respostas = useRef(
     [...dados.incorrect_answers, dados.correct_answer].sort(
       () => Math.random() - 0.5,
     ),
   );
-
-  const { setRespostas } = useContext(GlobalContext);
 
   const formik = useFormik({
     initialValues: { resp: "" },
@@ -26,12 +25,6 @@ export const Questao = ({ dados, index, perguntaAtual, setPerguntaAtual }) => {
 
   if (index !== perguntaAtual) return null;
 
-  // Tratamento para as HTML Entities
-  const pergunta = parseString(dados.question);
-  respostas.current.forEach(
-    (resposta, index, array) => (array[index] = parseString(resposta)),
-  );
-
   return (
     <form onSubmit={formik.handleSubmit}>
       <FormControl component="fieldset" sx={{ width: "100%" }}>
@@ -40,10 +33,10 @@ export const Questao = ({ dados, index, perguntaAtual, setPerguntaAtual }) => {
           sx={{ fontSize: "1.5rem" }}
           focused={false}
         >
-          {pergunta}
+          {dados.question}
         </FormLabel>
         <RadioFormGroup
-          questao={pergunta}
+          questao={dados.question}
           value={formik.values.resp}
           onChange={({ target }) => formik.setValues({ resp: target.value })}
         >

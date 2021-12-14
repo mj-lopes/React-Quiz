@@ -1,13 +1,14 @@
-import { Container } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "./GlobalContext";
-import { Header, Wrapper } from "./components";
+import { Pontuacao, Wrapper } from "./components";
 
 import { setLocalStorage } from "./helper/setLocalStorage";
 import { setLocalScore } from "./helper/setLocalScore";
 import { getLocalStorage } from "./helper/getLocalStorage";
 
 import Form from "./InitialForm";
+import { Header } from "./Header";
 import { StartQuiz } from "./startQuiz";
 import { Questao } from "./questao";
 import { Resultado } from "./resultado";
@@ -16,6 +17,7 @@ import { ReviewRelatorio } from "./reviewRelatorio";
 function App() {
   const {
     numeroPerguntas,
+    setNumeroPerguntas,
     data,
     setData,
     respostas,
@@ -28,7 +30,7 @@ function App() {
 
   useEffect(() => {
     getLocalStorage(setDataLocalStorage);
-  }, [setDataLocalStorage]);
+  }, [setDataLocalStorage, data]);
 
   const handleClickUltimoQuiz = () => {
     const { perguntasArray, respostasArray } = dataLocalStorage;
@@ -36,6 +38,13 @@ function App() {
     setData(perguntasArray);
     setRespostas(respostasArray);
     setVisualizarUltimoQuiz(true);
+  };
+
+  const handleClickTitulo = () => {
+    setData(null);
+    setRespostas([]);
+    setNumeroPerguntas(null);
+    setVisualizarUltimoQuiz(false);
   };
 
   const exibirUltimoQuiz = () => {
@@ -57,9 +66,16 @@ function App() {
         );
       }
 
-      return data.map((_, i) => (
-        <Resultado key={`Resulta pergunta - ${i + 1}`} index={i} />
-      ));
+      return (
+        <>
+          <Grid container>
+            <Pontuacao />
+          </Grid>
+          {data.map((_, i) => (
+            <Resultado key={`Resulta pergunta - ${i + 1}`} index={i} />
+          ))}
+        </>
+      );
     }
 
     if (data) {
@@ -79,7 +95,7 @@ function App() {
 
   return (
     <Container maxWidth={"sm"}>
-      <Header />
+      <Header onClick={() => handleClickTitulo()} />
       <Wrapper>
         {exibirUltimoQuiz()}
         {exibirConteudo()}

@@ -2,7 +2,6 @@ import React, { useContext, useRef } from "react";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import Opcao from "./style";
 import { GlobalContext } from "../GlobalContext";
-import parseString from "../helper/parseStringToHTML";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 
 export const Resultado = ({ index }) => {
@@ -13,11 +12,6 @@ export const Resultado = ({ index }) => {
     [...dados.incorrect_answers, dados.correct_answer].sort(
       () => Math.random() - 0.5,
     ),
-  );
-
-  const pergunta = parseString(dados.question);
-  opcoes.current.forEach(
-    (opcao, index, array) => (array[index] = parseString(opcao)),
   );
 
   const acertou = respostas[index] === dados.correct_answer;
@@ -39,7 +33,7 @@ export const Resultado = ({ index }) => {
           />
         }
       >
-        <h3>{pergunta}</h3>
+        <h3>{dados.question}</h3>
       </AccordionSummary>
       <AccordionDetails>
         <ul>

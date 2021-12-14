@@ -1,4 +1,3 @@
-import { Header } from "./Header";
 import { Wrapper } from "./Wrapper";
 import { String } from "./String";
 import { Btn } from "./Button";
@@ -6,9 +5,9 @@ import { Input } from "./Input";
 import { BtnsList } from "./BtnsList";
 import { RadioFormGroup } from "./RadioFormGroup";
 import { FormCtrlLabel } from "./FormCtrlLabel";
+import { Pontuacao } from "./Pontuacao";
 
 export {
-  Header,
   Wrapper,
   String,
   Btn,
@@ -16,4 +15,5 @@ export {
   BtnsList,
   RadioFormGroup,
   FormCtrlLabel,
+  Pontuacao,
 };
