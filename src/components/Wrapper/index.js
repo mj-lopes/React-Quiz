@@ -4,6 +4,7 @@ import { Box } from "@mui/system";
 export const Wrapper = ({ children }) => {
   return (
     <Box
+      className="anime"
       sx={{
         backgroundColor: "#fff",
         borderRadius: "6px",

@@ -45,6 +45,7 @@ function App() {
     setRespostas([]);
     setNumeroPerguntas(null);
     setVisualizarUltimoQuiz(false);
+    setPerguntaAtual(0);
   };
 
   const exibirUltimoQuiz = () => {
@@ -67,14 +68,14 @@ function App() {
       }
 
       return (
-        <>
+        <div className="anime">
           <Grid container>
             <Pontuacao />
           </Grid>
           {data.map((_, i) => (
             <Resultado key={`Resulta pergunta - ${i + 1}`} index={i} />
           ))}
-        </>
+        </div>
       );
     }
 
@@ -86,6 +87,7 @@ function App() {
           index={i}
           setPerguntaAtual={setPerguntaAtual}
           perguntaAtual={perguntaAtual}
+          quantidadePerguntas={data.length}
         />
       ));
     }

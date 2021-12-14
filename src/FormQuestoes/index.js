@@ -5,7 +5,13 @@ import { Btn, FormCtrlLabel, RadioFormGroup } from "../components";
 import { useFormik } from "formik";
 import { GlobalContext } from "../GlobalContext";
 
-export const Questao = ({ dados, index, perguntaAtual, setPerguntaAtual }) => {
+export const Questao = ({
+  dados,
+  index,
+  perguntaAtual,
+  setPerguntaAtual,
+  quantidadePerguntas,
+}) => {
   const { setRespostas } = useContext(GlobalContext);
 
   // Randomizar as posições das opções e guardar sua referência.
@@ -26,7 +32,7 @@ export const Questao = ({ dados, index, perguntaAtual, setPerguntaAtual }) => {
   if (index !== perguntaAtual) return null;
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={formik.handleSubmit} className="anime">
       <FormControl component="fieldset" sx={{ width: "100%" }}>
         <FormLabel
           component="legend"
@@ -66,7 +72,9 @@ export const Questao = ({ dados, index, perguntaAtual, setPerguntaAtual }) => {
         disabled={!formik.values.resp}
         onClick={formik.handleSubmit}
       >
-        Próxima pergunta
+        {perguntaAtual + 1 === quantidadePerguntas
+          ? "Finalizar"
+          : "Próxima pergunta"}
       </Btn>
     </form>
   );

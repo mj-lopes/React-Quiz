@@ -1,6 +1,19 @@
 import { createGlobalStyle } from "styled-components";
 import background from "../images/bg.png";
 
+import { keyframes } from "styled-components";
+
+const animeKeyFrames = keyframes`
+  from {
+    opacity: 0.8;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+`;
+
 const GlobalStyle = createGlobalStyle`
   * {
     outline: none;
@@ -39,6 +52,10 @@ const GlobalStyle = createGlobalStyle`
 
   li, ol {
     list-style-type: none;
+  }
+
+  .anime {
+    animation: ${animeKeyFrames} .3s forwards;   
   }
 `;
 

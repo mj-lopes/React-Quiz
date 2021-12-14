@@ -7,7 +7,7 @@ export const Tittle = ({ children, ...props }) => (
       "::before": {
         content: "''",
         display: "block",
-        width: "150px",
+        width: "160px",
         height: "3px",
         position: "relative",
         top: "55px",

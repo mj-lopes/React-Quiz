@@ -16,7 +16,12 @@ export const ReviewRelatorio = ({ onClick }) => {
           <String variant="h5" component={"h3"}>
             Último Quiz
           </String>
-          <Btn cor={"secondary"} onClick={onClick} size={"large"}>
+          <Btn
+            cor={"secondary"}
+            estilo={"outlined"}
+            onClick={onClick}
+            size={"large"}
+          >
             Visualizar
           </Btn>
         </Grid>

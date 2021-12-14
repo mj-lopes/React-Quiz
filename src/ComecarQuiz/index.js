@@ -9,9 +9,9 @@ export const StartQuiz = () => {
   const { request } = useFetch();
 
   return (
-    <Container>
+    <Container className="anime">
       <String variant="h3" marginBottom={3}>
-        Está pronto?
+        Você está pronto?
       </String>
       <BtnsList direction="row" spacing={2} justifyItems={"center"}>
         <Btn
