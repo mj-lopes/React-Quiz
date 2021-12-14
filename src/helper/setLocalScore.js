@@ -1,5 +1,4 @@
-export function setLocalScore(score) {
-  const scoreSalvo = Number(localStorage.getItem("pontos"));
-  const pts = scoreSalvo + score;
-  localStorage.setItem("pontos", pts);
+export function setLocalScore(quantidadeAcertos, quantidadePerguntas) {
+  const pontuacao = `${quantidadeAcertos}/${quantidadePerguntas}`;
+  localStorage.setItem("pontos", pontuacao);
 }

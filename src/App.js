@@ -53,6 +53,7 @@ function App() {
         setLocalStorage(data, respostas);
         setLocalScore(
           respostas.filter((x, i) => x === data[i].correct_answer).length,
+          numeroPerguntas,
         );
       }
 
