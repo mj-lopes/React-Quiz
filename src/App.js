@@ -1,18 +1,18 @@
-import { Container, Grid } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
-import { GlobalContext } from "./GlobalContext";
+import { Container, Grid } from "@mui/material";
 import { Pontuacao, Wrapper } from "./components";
+import { GlobalContext } from "./GlobalContext";
 
 import { setLocalStorage } from "./helper/setLocalStorage";
 import { setLocalScore } from "./helper/setLocalScore";
 import { getLocalStorage } from "./helper/getLocalStorage";
 
-import Form from "./InitialForm";
+import { FormNumPerguntas } from "./FormNumPerguntas";
 import { Header } from "./Header";
-import { StartQuiz } from "./startQuiz";
-import { Questao } from "./questao";
-import { Resultado } from "./resultado";
-import { ReviewRelatorio } from "./reviewRelatorio";
+import { StartQuiz } from "./ComecarQuiz";
+import { Questao } from "./FormQuestoes";
+import { Resultado } from "./Resultado";
+import { ReviewRelatorio } from "./ReverQuiz";
 
 function App() {
   const {
@@ -90,7 +90,7 @@ function App() {
       ));
     }
 
-    return numeroPerguntas ? <StartQuiz /> : <Form />;
+    return numeroPerguntas ? <StartQuiz /> : <FormNumPerguntas />;
   };
 
   return (
