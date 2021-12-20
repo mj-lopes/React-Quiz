@@ -15,11 +15,19 @@ function useFetch() {
         .then(({ data }) => {
           const perguntas = [];
           for (let pergunta of data.results) {
-            const { correct_answer, incorrect_answers, question } = pergunta;
+            const {
+              correct_answer,
+              incorrect_answers,
+              question,
+              category,
+              difficulty,
+            } = pergunta;
             const obj = {
               correct_answer: parseString(correct_answer),
               incorrect_answers: incorrect_answers.map((i) => parseString(i)),
               question: parseString(question),
+              category,
+              difficulty,
             };
             perguntas.push(obj);
           }
