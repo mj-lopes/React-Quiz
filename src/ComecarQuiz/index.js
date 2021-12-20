@@ -11,7 +11,7 @@ export const StartQuiz = () => {
   return (
     <Container className="anime">
       <String variant="h3" marginBottom={3}>
-        Você está pronto?
+        Are You Ready?
       </String>
       <BtnsList direction="row" spacing={2} justifyItems={"center"}>
         <Btn
@@ -19,10 +19,10 @@ export const StartQuiz = () => {
           cor={"secondary"}
           onClick={() => request(numeroPerguntas)}
         >
-          Let's GO!
+          Start!
         </Btn>
         <Btn estilo={"outlined"} onClick={() => setNumeroPerguntas(null)}>
-          Voltar
+          Cancel
         </Btn>
       </BtnsList>
     </Container>

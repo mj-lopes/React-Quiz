@@ -9,8 +9,8 @@ export const Header = ({ onClick }) => {
       <h1>
         <img src={AppName} alt="Squize it" />
       </h1>
-      <String variant="h6" component="h2" color={"#fff"}>
-        Até onde você consegue <span style={{ color: "#ffc107" }}>chegar</span>?
+      <String variant="h5" component="h2" color={"#fff"}>
+        How <span style={{ color: "#ffc107" }}>Far </span> Can You Go?
       </String>
     </StyledHeader>
   );

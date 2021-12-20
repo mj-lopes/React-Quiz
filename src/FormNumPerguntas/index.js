@@ -11,12 +11,12 @@ export const FormNumPerguntas = () => {
 
   const validationSchema = yup.object({
     num: yup
-      .number("Escolha um número")
-      .required("Escolha um número inteiro")
-      .min(1, "Escolha um valor entre 1 e 99")
-      .max(99, "Escolha um valor entre 1 e 99")
-      .positive("Escolha um número positivo")
-      .integer("Escolha um número inteiro"),
+      .number("Choose a positive number")
+      .required("Choose a positive number")
+      .min(1, "Choose a number ranging from 1 to 99")
+      .max(99, "Choose a number ranging from 1 to 99")
+      .positive("Choose a positive number")
+      .integer("Choose a integer"),
   });
 
   const formik = useFormik({
@@ -32,18 +32,18 @@ export const FormNumPerguntas = () => {
   return (
     <>
       <Tittle variant="h3" component="h2">
-        Novo Quiz
+        Start a New Quiz
       </Tittle>
       <form onSubmit={formik.handleSubmit}>
         <String variant="body1" sx={{ marginTop: ".5rem" }}>
-          Quantas perguntas deseja responder?
+          How many questions do you want to answer?
         </String>
         <Input
           fullWidth
           id={"num"}
           nome={"num"}
           estilo={"outlined"}
-          label={"Número de perguntas"}
+          label={"Number of questions"}
           type={"number"}
           value={formik.values.num}
           onChange={formik.handleChange}

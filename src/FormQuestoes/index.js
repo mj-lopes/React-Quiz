@@ -51,7 +51,7 @@ export const Questao = ({
         <FormControl component="fieldset" sx={{ width: "100%" }}>
           <FormLabel
             component="legend"
-            sx={{ fontSize: "1.5rem" }}
+            sx={{ fontSize: "1.5rem", color: "#16687D", fontWeight: "700" }}
             focused={false}
           >
             {dados.question}
@@ -88,8 +88,8 @@ export const Questao = ({
           onClick={formik.handleSubmit}
         >
           {perguntaAtual + 1 === quantidadePerguntas
-            ? "Finalizar"
-            : "Próxima pergunta"}
+            ? "Finish quiz"
+            : "Next question"}
         </Btn>
       </form>
     </div>
